@@ -1,4 +1,4 @@
-function x(str) {
+function isUnique(str) {
   let hashMap = new Map();
   for (let i = 0; i < str.length; i++) {
     if (hashMap.has(str[i])) {
