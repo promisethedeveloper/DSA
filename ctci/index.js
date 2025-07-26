@@ -121,3 +121,42 @@ function sortedSquare(nums) {
   }
   return answerArr;
 }
+
+function checkLength(nums, k) {
+  let leftIndex = 0;
+  let currentSum = 0;
+  let answer = 0;
+  for (let rightIndex = 0; rightIndex < nums.length; rightIndex++) {
+    currentSum += nums[rightIndex];
+
+    while (currentSum > k) {
+      currentSum -= nums[leftIndex];
+      leftIndex++;
+
+      answer = Math.max(answer, rightIndex - leftIndex + 1);
+    }
+  }
+  return answer;
+}
+
+function findLength(s) {
+  let leftIndex = 0;
+  let curr = 0;
+  let answer = 0;
+
+  for (let rightIndex = 0; rightIndex < s.length; rightIndex++) {
+    if (s[rightIndex] == "0") {
+      curr++;
+    }
+
+    while (curr > 1) {
+      if (s[leftIndex] == "0") {
+        curr--;
+      }
+      leftIndex++;
+    }
+    answer = Math.max(answer, rightIndex - leftIndex + 1);
+  }
+
+  return answer;
+}
